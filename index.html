@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodMap - Головна сторінка</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <!-- Використання тегу img з атрибутом alt -->
+        <a href="index.html">
+            <img src="images/logo.png" alt="Логотип сервісу FoodMap" width="150">
+        </a>
+        <nav aria-label="Головна навігація">
+            <!-- Використання маркованого списку ul та посилань a з href -->
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="search.html">Результати пошуку</a></li>
+                <li><a href="restaurant.html">Сторінка закладу</a></li>
+                <li><a href="about.html">Про проєкт</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <!-- Використання заголовка h1 та абзацу p -->
+            <h1>Знайди місце, де є саме те, що хочеться з'їсти</h1>
+            <p>Введіть бажані страви, і ми покажемо заклади Києва, де вони є в меню.</p>
+
+            <!-- Використання форми -->
+            <form action="search.html" method="GET" class="search-form">
+                <div class="form-group">
+                    <label for="dish-input">Що ви хочете з'їсти?</label>
+                    <input type="text" id="dish-input" name="dish" placeholder="Наприклад: борщ, піца, суші" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location-select">Оберіть район:</label>
+                    <select id="location-select" name="location">
+                        <option value="any">Будь-який район</option>
+                        <option value="pecherskyi">Печерський</option>
+                        <option value="podilskyi">Подільський</option>
+                        <option value="shevchenkivskyi">Шевченківський</option>
+                    </select>
+                </div>
+
+                <button type="submit">Знайти заклади</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FoodMap. Усі права захищено.</p>
+    </footer>
+</body>
+</html>
