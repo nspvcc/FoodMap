@@ -1,11 +1,83 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="uk">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pervak - FoodMap</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Логотип сервісу FoodMap" width="150">
+        </a>
+        <nav aria-label="Головна навігація">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="search.html">Результати пошуку</a></li>
+                <li><a href="restaurant.html">Сторінка закладу</a></li>
+                <li><a href="about.html">Про проєкт</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <article class="restaurant-details">
+            <h1>Ресторан "Pervak"</h1>
+
+            <!-- Зображення закладу -->
+            <img src="images/background.jpg" alt="Інтер'єр ресторану Pervak у Києві" width="600">
+
+            <!-- Використання заголовка h3 -->
+            <h3>Основна інформація</h3>
+            <p><strong>Рейтинг:</strong> 4.8/5.0</p>
+            <p><strong>Адреса:</strong> вул. Рогнідинська, 2, Київ</p>
+            <p><a href="https://maps.google.com/?q=вул.Рогнідинська,2,Київ" target="_blank">Відкрити на карті</a></p>
+
+            <section class="menu-section">
+                <h2>Меню закладу</h2>
+                <ul>
+                    <li>Борщ із салом та пампушками — 180 грн</li>
+                    <li>Вареники з картоплею — 140 грн</li>
+                    <li>Котлета по-київськи — 220 грн</li>
+                </ul>
+            </section>
+
+            <section class="reviews-section">
+                <h3>Відгуки відвідувачів</h3>
+
+                <!-- Існуючий коментар -->
+                <article class="review">
+                    <p><strong>Яна:</strong> <i>"Дуже смачний борщ! Рекомендую."</i> (Оцінка: 5/5)</p>
+                </article>
+
+                <!-- Форма для нового відгуку -->
+                <h4>Залишити відгук:</h4>
+                <form action="#" method="POST">
+                    <label for="reviewer-name">Ваше ім'я:</label><br>
+                    <input type="text" id="reviewer-name" name="reviewer-name" required><br><br>
+
+                    <label for="review-text">Коментар:</label><br>
+                    <textarea id="review-text" name="review-text" rows="4" required></textarea><br><br>
+
+                    <label>Оцінка:</label>
+                    <select name="rating">
+                        <option value="5">5 - Відмінно</option>
+                        <option value="4">4 - Добре</option>
+                        <option value="3">3 - Нормально</option>
+                        <option value="2">2 - Погано</option>
+                        <option value="1">1 - Жахливо</option>
+                    </select><br><br>
+
+                    <button type="submit">Надіслати відгук</button>
+                </form>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FoodMap. Усі права захищено.</p>
+    </footer>
 </body>
 </html>

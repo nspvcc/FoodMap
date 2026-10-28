@@ -1,11 +1,80 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="uk">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результати пошуку - FoodMap</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <div class="logo">FoodMap</div>
+        <nav aria-label="Головна навігація">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="search.html">Результати пошуку</a></li>
+                <li><a href="restaurant.html">Сторінка закладу</a></li>
+                <li><a href="about.html">Про проєкт</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <h1>Результати пошуку</h1>
+        <p>Знайдено заклади за вашим запитом: "Борщ"</p>
+
+        <div class="search-container">
+            <aside class="filters">
+                <h2>Фільтри</h2>
+                <form>
+                    <label for="price-filter">Ціновий рівень:</label>
+                    <select id="price-filter">
+                        <option value="all">Усі</option>
+                        <option value="low">Дешево (₴)</option>
+                        <option value="medium">Помірно (₴₴)</option>
+                        <option value="high">Дорого (₴₴₴)</option>
+                    </select>
+
+                    <label for="rating-filter">Мінімальний рейтинг:</label>
+                    <input type="number" id="rating-filter" min="1" max="5" step="0.1" value="4.0">
+
+                    <button type="reset">Скинути фільтри</button>
+                </form>
+            </aside>
+
+            <section class="results-list">
+                <article class="restaurant-card">
+                    <h3><a href="restaurant.html">Пузата Хата</a></h3>
+                    <p>Рейтинг: 4.5 | Ціна: ₴ | Відстань: 1.2 км</p>
+                    <p>Адреса: вул. Хрещатик, 15</p>
+                    <p>Доступні страви: Борщ український (65 грн)</p>
+                    <article class="restaurant-card">
+                        <h3><a href="restaurant.html">Чорноморка</a></h3>
+                        <p>Рейтинг: 4.7 | Ціна: ₴₴ | Відстань: 3.1 км</p>
+                        <p>Адреса: вул. Ярославська, 5/2</p>
+                        <p>Доступні страви: Борщ із бичками (195 грн)</p>
+                    </article>
+
+                    <article class="restaurant-card">
+                        <h3><a href="restaurant.html">GastroFamily Market</a></h3>
+                        <p>Рейтинг: 4.6 | Ціна: ₴ | Відстань: 1.8 км</p>
+                        <p>Адреса: вул. Басейна, 2</p>
+                        <p>Доступні страви: Борщ (89 грн)</p>
+                    </article>
+
+                    <article class="restaurant-card">
+                        <h3><a href="restaurant.html">Pervak</a></h3>
+                        <p>Рейтинг: 4.8 | Ціна: ₴₴₴ | Відстань: 2.5 км</p>
+                        <p>Адреса: вул. Рогнідинська, 2</p>
+                        <p>Доступні страви: Борщ із салом та пампушками (180 грн)</p>
+                    </article>
+</section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FoodMap. Усі права захищено.</p>
+    </footer>
 </body>
 </html>
