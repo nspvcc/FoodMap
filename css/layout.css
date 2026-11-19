@@ -1,0 +1,163 @@
+/* layout.css — каркас сторінок і макети на Flexbox та Grid */
+
+/* Каркас: футер притиснутий донизу навіть на коротких сторінках (Flexbox) */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Шапка, контент і підвал мають однакову ширину: фон на всю ширину екрана,
+   а вміст центрується в контейнері до 1100px */
+header,
+main,
+footer {
+    padding-inline: max(var(--space-2), calc((100% - var(--container)) / 2));
+}
+
+main {
+    padding-block: var(--space-3) var(--space-4);
+}
+
+/* ---------- Шапка та навігація (Flexbox) ---------- */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-3);
+    padding-block: var(--space-2);
+    background-color: var(--color-surface);
+    border-bottom: 3px solid var(--color-primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo img {
+    display: block;
+    width: 165px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav li {
+    margin: 0;
+}
+
+/* Футер */
+footer {
+    padding-block: var(--space-3);
+    background-color: var(--color-text);
+    color: #F9FAFB;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ---------- Головна: герой-блок з пошуком ---------- */
+.hero-section {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+    padding: var(--space-4) var(--space-2);
+    border-radius: var(--radius);
+    background-color: #E5E7EB;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-section > h1,
+.hero-section > p {
+    margin: 0;
+    padding: var(--space-1) var(--space-2);
+    background-color: rgba(255, 247, 237, 0.92);
+    border-radius: var(--radius-sm);
+}
+
+/* ---------- Результати пошуку: фільтри + список (Grid) ---------- */
+.search-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    align-items: start;
+}
+
+.results-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-2);
+}
+
+/* ---------- Сторінка закладу ---------- */
+.restaurant-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+}
+
+.restaurant-details > h1,
+.restaurant-details > img {
+    margin: 0;
+}
+
+.restaurant-details > img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: var(--radius);
+}
+
+/* ---------- Про проєкт ---------- */
+.about-section {
+    display: grid;
+    gap: var(--space-2);
+    max-width: 800px;
+}
+
+/* ---------- Контакти ---------- */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    align-items: start;
+}
+
+/* ---------- Вхід ---------- */
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ---------- Адмінпанель ---------- */
+.admin-section {
+    margin-bottom: var(--space-4);
+}

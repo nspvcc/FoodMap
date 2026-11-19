@@ -1,18 +1,26 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Результати пошуку - FoodMap</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/menu.js"></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/search.js" defer></script>
 </head>
 <body>
     <header>
-        <div class="logo">FoodMap</div>
-        <nav aria-label="Головна навігація">
+        <a class="logo" href="index.html">
+            <img src="images/logo.png" alt="Логотип сервісу FoodMap">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Відкрити меню">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="main-nav" class="site-nav" aria-label="Головна навігація">
             <ul>
                 <li><a href="index.html">Головна</a></li>
-                <li><a href="search.html">Результати пошуку</a></li>
+                <li><a href="search.html" aria-current="page">Результати пошуку</a></li>
                 <li><a href="restaurant.html">Сторінка закладу</a></li>
                 <li><a href="about.html">Про проєкт</a></li>
                 <li><a href="contacts.html">Контакти</a></li>
@@ -22,54 +30,76 @@
 
     <main>
         <h1>Результати пошуку</h1>
-        <p>Знайдено заклади за вашим запитом: "Борщ"</p>
+        <p id="search-summary" aria-live="polite">Перегляньте заклади та налаштуйте фільтри. Ціни й меню в картках наведені як демонстраційні приклади.</p>
 
         <div class="search-container">
             <aside class="filters">
                 <h2>Фільтри</h2>
-                <form>
-                    <label for="price-filter">Ціновий рівень:</label>
-                    <select id="price-filter">
-                        <option value="all">Усі</option>
-                        <option value="low">Дешево (₴)</option>
-                        <option value="medium">Помірно (₴₴)</option>
-                        <option value="high">Дорого (₴₴₴)</option>
-                    </select>
-
-                    <label for="rating-filter">Мінімальний рейтинг:</label>
-                    <input type="number" id="rating-filter" min="1" max="5" step="0.1" value="4.0">
-
-                    <button type="reset">Скинути фільтри</button>
+                <form id="filters-form">
+                    <div class="form-group price-range-group">
+                        <label>Бюджет на страву:</label>
+                        <div class="range-value-row">
+                            <span>Від <strong id="min-price-value">0</strong> грн</span>
+                            <span>До <strong id="max-price-value">500</strong> грн</span>
+                        </div>
+                        <label for="min-price-filter" class="visually-hidden">Мінімальна ціна</label>
+                        <input type="range" id="min-price-filter" name="minPrice" min="0" max="1000" step="10" value="0">
+                        <label for="max-price-filter" class="visually-hidden">Максимальна ціна</label>
+                        <input type="range" id="max-price-filter" name="maxPrice" min="0" max="1000" step="10" value="500">
+                        <p class="filter-hint">Перетягніть повзунки, щоб задати зручний діапазон.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating-filter">Мінімальний рейтинг:</label>
+                        <input type="number" id="rating-filter" name="rating" min="1" max="5" step="0.1" value="1">
+                    </div>
+                    <div class="filter-actions">
+                        <button type="submit">Застосувати фільтри</button>
+                        <button type="reset" class="btn-secondary">Скинути фільтри</button>
+                    </div>
                 </form>
             </aside>
 
-            <section class="results-list">
-                <article class="restaurant-card">
-                    <h3><a href="restaurant.html">Пузата Хата</a></h3>
-                    <p>Рейтинг: 4.5 | Ціна: ₴ | Відстань: 1.2 км</p>
-                    <p>Адреса: вул. Хрещатик, 15</p>
-                    <p>Доступні страви: Борщ український (65 грн)</p>
-                    <article class="restaurant-card">
-                        <h3><a href="restaurant.html">Чорноморка</a></h3>
-                        <p>Рейтинг: 4.7 | Ціна: ₴₴ | Відстань: 3.1 км</p>
-                        <p>Адреса: вул. Ярославська, 5/2</p>
-                        <p>Доступні страви: Борщ із бичками (195 грн)</p>
-                    </article>
+            <section class="results-list" id="results-list" aria-live="polite">
+                <article class="restaurant-card" data-rating="4.5" data-district="darnytskyi" data-menu='{"борщ":95,"піца":145,"вареники":110}'>
+                    <img class="restaurant-card-image" src="https://images.pexels.com/photos/15389366/pexels-photo-15389366.jpeg?cs=srgb&dl=pexels-valeriya-15389366.jpg&fm=jpg" alt="Ілюстративне фото страв" loading="lazy">
+                    <h3><a href="restaurant.html?id=puzata">Пузата Хата</a></h3>
+                    <p class="meta">Рейтинг: 4.5</p>
+                    <p>Адреса: Київ, Дарницький район</p>
+                    <p class="dish-price">Приклади цін: борщ — 95 грн; піца — 145 грн; вареники — 110 грн</p>
+                </article>
 
-                    <article class="restaurant-card">
-                        <h3><a href="restaurant.html">GastroFamily Market</a></h3>
-                        <p>Рейтинг: 4.6 | Ціна: ₴ | Відстань: 1.8 км</p>
-                        <p>Адреса: вул. Басейна, 2</p>
-                        <p>Доступні страви: Борщ (89 грн)</p>
-                    </article>
+                <article class="restaurant-card" data-rating="4.7" data-district="darnytskyi" data-menu='{"піца з морепродуктами":245,"рибний суп":190,"салат":165}'>
+                    <img class="restaurant-card-image" src="https://www.welcometofife.com/mediaLibrary/images/english/117950-business-page.jpg" alt="Ілюстративне фото страви з морепродуктами" loading="lazy">
+                    <h3><a href="restaurant.html?id=chornomorka">Чорноморка</a></h3>
+                    <p class="meta">Рейтинг: 4.7</p>
+                    <p>Адреса: Київ, Дарницький район</p>
+                    <p class="dish-price">Приклади цін: піца з морепродуктами — 245 грн; рибний суп — 190 грн; салат — 165 грн</p>
+                </article>
 
-                    <article class="restaurant-card">
-                        <h3><a href="restaurant.html">Pervak</a></h3>
-                        <p>Рейтинг: 4.8 | Ціна: ₴₴₴ | Відстань: 2.5 км</p>
-                        <p>Адреса: вул. Рогнідинська, 2</p>
-                        <p>Доступні страви: Борщ із салом та пампушками (180 грн)</p>
-                    </article>
-</section>
+                <article class="restaurant-card" data-rating="4.6" data-district="darnytskyi" data-menu='{"борщ":120,"піца":175,"паста":185,"салат":130}'>
+                    <img class="restaurant-card-image" src="https://cdn-media.choiceqr.com/prod-eat-mischenko-kitchen/thumbnail_eRntetc-VgxRGlh-oDWQoRf_C-P-b.jpeg" alt="Ілюстративне фото подачі страв" loading="lazy">
+                    <h3><a href="restaurant.html?id=gastrofamily">GastroFamily Market</a></h3>
+                    <p class="meta">Рейтинг: 4.6</p>
+                    <p>Адреса: Київ, Дарницький район</p>
+                    <p class="dish-price">Приклади цін: борщ — 120 грн; піца — 175 грн; паста — 185 грн; салат — 130 грн</p>
+                </article>
+
+                <article class="restaurant-card" data-rating="4.3" data-district="darnytskyi" data-menu='{"піца":210,"борщ":130,"паста":195}'>
+                    <img class="restaurant-card-image" src="https://44f463df43.clvaw-cdnwnd.com/fb1a6548a585892c669e2a933b7604cc/200000805-214b7214b8/IMG_4070.jpeg?ph=44f463df43" alt="Ілюстративне фото ресторанної подачі" loading="lazy">
+                    <h3><a href="restaurant.html?id=nemarket">Nemarket</a></h3>
+                    <p class="meta">Рейтинг: 4.3</p>
+                    <p>Адреса: Київ, Дарницький район</p>
+                    <p class="dish-price">Приклади цін: піца — 210 грн; борщ — 130 грн; паста — 195 грн</p>
+                </article>
+
+                <article class="restaurant-card" data-rating="4.8" data-district="darnytskyi" data-menu='{"борщ із салом та пампушками":180,"вареники з картоплею":140,"котлета по-київськи":220}'>
+                    <img class="restaurant-card-image" src="https://images.pexels.com/photos/2619967/pexels-photo-2619967.jpeg" alt="Ілюстративне фото страви" loading="lazy">
+                    <h3><a href="restaurant.html?id=pervak">Pervak</a></h3>
+                    <p class="meta">Рейтинг: 4.8</p>
+                    <p>Адреса: Київ, Дарницький район</p>
+                    <p class="dish-price">Приклади цін: борщ із салом та пампушками — 180 грн; вареники з картоплею — 140 грн; котлета по-київськи — 220 грн</p>
+                </article>
+            </section>
         </div>
     </main>
 

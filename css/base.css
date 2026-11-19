@@ -1,0 +1,153 @@
+/* base.css — шрифт, змінні брендбуку, скидання стилів, типографіка */
+
+/* Inter: Regular 400, SemiBold 600, Bold 700 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    /* Кольори з брендбуку (ЛР1) */
+    --color-primary: #F97316;
+    --color-primary-dark: #C2410C;
+    --color-accent: #EF4444;
+    --color-bg: #FFF7ED;
+    --color-surface: #FFFFFF;
+    --color-text: #1F2937;
+
+    /* Допоміжні кольори */
+    --color-muted: #4B5563;
+    --color-border: #FED7AA;
+    --color-error: #B91C1C;
+    --color-error-bg: #FEF2F2;
+    --color-success: #15803D;
+
+    /* Типографіка */
+    --font-main: 'Inter', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+    /* Відступи, радіуси, тіні */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2.5rem;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 2px 10px rgba(194, 65, 12, 0.10);
+    --container: 1100px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* Заголовки (Inter Bold) */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-text);
+    margin: 0 0 var(--space-2);
+}
+
+h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); }
+h2 { font-size: clamp(1.3rem, 3.2vw, 1.7rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; }
+
+p {
+    margin: 0 0 var(--space-2);
+}
+
+/* Акцентні елементи та підписи (Inter SemiBold) */
+strong, b, th, label, .accent {
+    font-weight: 600;
+}
+
+/* Посилання.
+   #C2410C дає кращий контраст на кремовому фоні, ніж #F97316,
+   при наведенні — акцентний червоний #EF4444 */
+a {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+/* Видимий фокус для клавіатури */
+:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul, ol {
+    margin: 0 0 var(--space-2);
+    padding-left: 1.4rem;
+}
+
+li {
+    margin-bottom: 0.35rem;
+}
+
+address {
+    font-style: normal;
+}
+
+q, em {
+    font-style: italic;
+}
+
+/* ---------- Кросбраузерність ---------- */
+/* Safari/iOS: прибираємо системне оформлення кнопок і полів, щоб вони виглядали однаково */
+button,
+input,
+select,
+textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    font: inherit;
+}
+
+/* Власна стрілка для select (після скидання appearance) */
+select {
+    background-image: linear-gradient(45deg, transparent 50%, #C2410C 50%),
+                      linear-gradient(135deg, #C2410C 50%, transparent 50%);
+    background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.2rem;
+}
+
+/* Firefox: прибираємо внутрішню рамку фокуса на кнопках */
+button::-moz-focus-inner {
+    border: 0;
+}
+
+/* Прибираємо стрілки-лічильники у полях number (Chrome/Safari/Edge та Firefox) */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}

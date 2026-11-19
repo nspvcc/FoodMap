@@ -1,0 +1,159 @@
+/* responsive.css — адаптивність: медіазапити (mobile first)
+   Базові стилі розраховані на смартфони, далі — розширення для планшетів і ПК.
+   Точки зламу: 768px (планшет), 1024px (ПК). */
+
+/* ---------- Смартфони: бургер-меню ---------- */
+/* Клас .js додає menu.js. Без JavaScript меню залишається розгорнутим і доступним */
+@media (max-width: 767px) {
+    .js .nav-toggle {
+        display: flex;
+    }
+
+    .js .site-nav {
+        display: none;
+        flex-basis: 100%;
+        order: 3;
+    }
+
+    .js .site-nav.is-open {
+        display: block;
+    }
+
+    .site-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .site-nav a {
+        display: block;
+        padding: 0.8rem 0.25rem;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .hero-section {
+        padding: var(--space-3) var(--space-2);
+    }
+
+    /* Таблиця перетворюється на список карток */
+    .table-wrapper table,
+    .table-wrapper tbody,
+    .table-wrapper tr,
+    .table-wrapper td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-wrapper thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .table-wrapper tr {
+        margin-bottom: var(--space-2);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+    }
+
+    .table-wrapper td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-2);
+        text-align: right;
+    }
+
+    .table-wrapper td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        text-align: left;
+    }
+}
+
+/* ---------- Планшети та більші екрани ---------- */
+@media (min-width: 768px) {
+    /* Форма пошуку: два поля в рядок, кнопка під ними */
+    .search-form {
+        grid-template-columns: 1fr 1fr;
+        align-items: end;
+    }
+
+    .search-form button {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .hero-section {
+        padding: 5rem var(--space-3);
+    }
+
+    .contact-form button,
+    .auth-card button {
+        justify-self: start;
+    }
+
+    /* Адмінка: поля форми в рядок */
+    .admin-form {
+        grid-template-columns: 2fr 2fr 1fr auto;
+        align-items: end;
+    }
+}
+
+/* ---------- Комп'ютери ---------- */
+@media (min-width: 1024px) {
+    /* Результати пошуку: фільтри ліворуч, список праворуч */
+    .search-container {
+        grid-template-columns: 260px 1fr;
+    }
+
+    .filters {
+        position: sticky;
+        top: 6.5rem;
+    }
+
+    /* Сторінка закладу: меню та відгуки в дві колонки */
+    .restaurant-details {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    .restaurant-details > h1,
+    .restaurant-details > img,
+    .restaurant-details > .info-section {
+        grid-column: 1 / -1;
+    }
+
+    /* Контакти: інформація ліворуч, форма праворуч */
+    .contacts-grid {
+        grid-template-columns: 1fr 1.4fr;
+    }
+}
+
+/* Менше руху для тих, хто його вимкнув у системі */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Друк: без навігації */
+@media print {
+    header,
+    footer {
+        display: none;
+    }
+
+    body {
+        background: #FFFFFF;
+    }
+}

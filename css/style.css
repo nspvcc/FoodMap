@@ -1,0 +1,9 @@
+/*
+  FoodMap — головний файл стилів.
+  Підключає частини через @import (директиви @import мають бути на самому початку файлу).
+  Порядок важливий: змінні та база → макет → компоненти → адаптивність.
+*/
+@import url('base.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('responsive.css');

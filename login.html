@@ -1,15 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вхід - FoodMap</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/menu.js"></script>
+    <script src="js/validation.js" defer></script>
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="images/logo.png" alt="Логотип FoodMap" width="150"></a>
-        <nav>
+        <a class="logo" href="index.html">
+            <img src="images/logo.png" alt="Логотип сервісу FoodMap" width="220">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Відкрити меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="main-nav" class="site-nav" aria-label="Навігація">
             <ul>
                 <li><a href="index.html">Головна</a></li>
                 <li><a href="about.html">Про проєкт</a></li>
@@ -17,21 +26,29 @@
         </nav>
     </header>
 
-    <main style="text-align: center; padding: 50px;">
-        <h1>Вхід в систему</h1>
-        <form action="admin.html" method="GET" style="display: inline-block; text-align: left;">
-            <label for="username">Логін:</label><br>
-            <input type="text" id="username" name="username" required><br><br>
+    <main class="auth-page">
+        <div class="auth-card">
+            <h1>Вхід в систему</h1>
+            <form action="admin.html" method="GET" class="needs-validation">
+                <p class="form-summary" role="alert"></p>
 
-            <label for="password">Пароль:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
+                <div class="form-group">
+                    <label for="username">Логін:</label>
+                    <input type="text" id="username" name="username" autocomplete="username" required>
+                </div>
 
-            <button type="submit">Увійти</button>
-        </form>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
+                </div>
+
+                <button type="submit">Увійти</button>
+            </form>
+        </div>
     </main>
 
     <footer>
-        <p>© 2026 FoodMap. Усі права захищено.</p>
+        <p>&copy; 2026 FoodMap. Усі права захищено.</p>
     </footer>
 </body>
 </html>

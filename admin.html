@@ -1,15 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Адмін-панель - FoodMap</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/menu.js"></script>
+    <script src="js/validation.js" defer></script>
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="images/logo.png" alt="Логотип FoodMap" width="150"></a>
-        <nav>
+        <a class="logo" href="index.html">
+            <img src="images/logo.png" alt="Логотип сервісу FoodMap" width="220">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Відкрити меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="main-nav" class="site-nav" aria-label="Навігація адміністратора">
             <ul>
                 <li><a href="index.html">Вийти на сайт</a></li>
                 <li><strong>Адміністратор</strong></li>
@@ -20,39 +29,69 @@
     <main>
         <h1>Панель керування закладами</h1>
 
-        <section>
+        <section class="admin-section">
             <h2>Додати новий заклад</h2>
-            <form action="#" method="POST">
-                <label for="rest-name">Назва закладу:</label>
-                <input type="text" id="rest-name" name="rest-name" required>
+            <form action="#" method="POST" class="admin-form needs-validation">
+                <p class="form-summary" role="alert"></p>
 
-                <label for="rest-address">Адреса:</label>
-                <input type="text" id="rest-address" name="rest-address" required>
+                <div class="form-group">
+                    <label for="rest-name">Назва закладу:</label>
+                    <input type="text" id="rest-name" name="rest-name" required>
+                </div>
 
-                <label for="rest-rating">Рейтинг:</label>
-                <input type="number" id="rest-rating" min="1" max="5" step="0.1">
+                <div class="form-group">
+                    <label for="rest-address">Адреса:</label>
+                    <input type="text" id="rest-address" name="rest-address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rest-rating">Рейтинг (1–5):</label>
+                    <input type="number" id="rest-rating" name="rest-rating" min="1" max="5" step="0.1">
+                </div>
 
                 <button type="submit">Додати заклад</button>
             </form>
         </section>
 
-        <section>
+        <section class="admin-section">
             <h2>Керування стравами (Меню)</h2>
-            <table>
-                <tr>
-                    <th>Заклад</th>
-                    <th>Страва</th>
-                    <th>Ціна</th>
-                    <th>Дія</th>
-                </tr>
-                <tr>
-                    <td>Pervak</td>
-                    <td>Борщ</td>
-                    <td>180 грн</td>
-                    <td><button type="button">Видалити</button></td>
-                </tr>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Заклад</th>
+                            <th scope="col">Страва</th>
+                            <th scope="col">Ціна</th>
+                            <th scope="col">Дія</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Заклад">Pervak</td>
+                            <td data-label="Страва">Борщ</td>
+                            <td data-label="Ціна">180 грн</td>
+                            <td data-label="Дія"><button type="button" class="btn-danger">Видалити</button></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Заклад">Pervak</td>
+                            <td data-label="Страва">Вареники з картоплею</td>
+                            <td data-label="Ціна">140 грн</td>
+                            <td data-label="Дія"><button type="button" class="btn-danger">Видалити</button></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Заклад">Pervak</td>
+                            <td data-label="Страва">Котлета по-київськи</td>
+                            <td data-label="Ціна">220 грн</td>
+                            <td data-label="Дія"><button type="button" class="btn-danger">Видалити</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 FoodMap. Усі права захищено.</p>
+    </footer>
 </body>
 </html>
